@@ -30,11 +30,19 @@ $content = implode("\n", $lines);
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <title><?= htmlspecialchars($title)?></title>
+    <link rel="stylesheet" href="style.css">
+    <title><?= htmlspecialchars($title) ?></title>
 </head>
 <body>
-    <a href="index.php">←Voltar</a>
-    <h1><?= htmlspecialchars($title)?></h1>
-    <?=$content?>
+    <a class="back-link" href="index.php">← Voltar</a>
+
+    <header>
+        <h1 class="site-title small">DavidLog</h1>
+        <h2 class="post-title"><?= htmlspecialchars($title) ?></h2>
+    </header>
+
+    <article class="post-content">
+        <?= $content ?>
+    </article>
 </body>
 </html>

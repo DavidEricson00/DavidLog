@@ -22,23 +22,26 @@ usort($posts, function ($a, $b, $c){
 ?>
 
 <!DOCTYPE html>
-<html lang = "pt-br">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
     <title>DavidLog</title>
 </head>
 <body>
-<h1>DavidLog</h1>
+    <header>
+        <h1 class="site-title">DavidLog</h1>
+        <h3 class="site-subtitle">Bom dia :)</h3>
+    </header>
 
-<ul>
-<?php
-    foreach($posts as $post)
-?>
-    <li>
-        <a href="post.php?p=<?= urlencode($post["path"]) ?>">
-            <?= htmlspecialchars($post["title"]) ?>
-        </a>
-    </li>
-</ul>
+    <ul class="post-list">
+        <?php foreach ($posts as $post): ?>
+            <li>
+                <a class="post-link" href="post.php?p=<?= urlencode($post["path"]) ?>">
+                    <?= htmlspecialchars($post["title"]) ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
 </body>
 </html>
