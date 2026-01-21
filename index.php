@@ -6,13 +6,19 @@ $baseDir = __DIR__ . "/posts";
 
 $posts = [];
 
-foreach (glob("$baseDir/*/*/*/*.html") as $file){
-    $lines = file($file, FILE_IGNORE_NEW_LINES);    
+foreach (glob("$baseDir/*/*/*/*.html") as $file) {
+    $relativePath = str_replace($baseDir . "/", "", $file);
+    $parts = explode("/", $relativePath);
+
+    [$year, $month, $day] = array_slice($parts, 0, 3);
+
+    $lines = file($file, FILE_IGNORE_NEW_LINES);
     $title = array_shift($lines);
 
     $posts[] = [
         "title" => $title,
-        "path" => str_replace($baseDir . "/", "", $file)
+        "path" => $relativePath,
+        "date" => "$day/$month/$year"
     ];
 }
 
@@ -36,10 +42,11 @@ usort($posts, function ($a, $b, $c){
 
     <ul class="post-list">
         <?php foreach ($posts as $post): ?>
-            <li>
+            <li class="post-item">
                 <a class="post-link" href="post.php?p=<?= urlencode($post["path"]) ?>">
                     <?= htmlspecialchars($post["title"]) ?>
                 </a>
+                <p class="post-date"><?= $post["date"] ?></p>
             </li>
         <?php endforeach; ?>
     </ul>

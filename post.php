@@ -21,6 +21,13 @@ if (filesize($path) > 1024 * 1024) {
     die("Post muito grande");
 }
 
+$relativePath = str_replace(realpath($baseDir) . DIRECTORY_SEPARATOR, "", $path);
+$parts = explode(DIRECTORY_SEPARATOR, $relativePath);
+
+[$year, $month, $day] = array_slice($parts, 0, 3);
+
+$postDate = "$day/$month/$year";
+
 $lines = file($path, FILE_IGNORE_NEW_LINES);
 $title = array_shift($lines);
 $content = implode("\n", $lines);
@@ -38,6 +45,7 @@ $content = implode("\n", $lines);
 
     <header>
         <h1 class="site-title small">DavidLog</h1>
+        <p class="post-date"><?= $postDate ?></p>
         <h2 class="post-title"><?= htmlspecialchars($title) ?></h2>
     </header>
 
