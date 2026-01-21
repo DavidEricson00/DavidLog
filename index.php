@@ -22,8 +22,8 @@ foreach (glob("$baseDir/*/*/*/*.html") as $file) {
     ];
 }
 
-usort($posts, function ($a, $b, $c){
-    return strcmp($c["path"], $b["path"], $a["path"]);
+usort($posts, function ($a, $b) {
+    return strcmp($b["path"], $a["path"]);
 });
 ?>
 
