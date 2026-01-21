@@ -8,12 +8,34 @@ foreach (glob("$baseDir/*/*/*/*.html") as $file){
     $title = array_shift($lines);
 
     $posts[] = [
-        "title" => $title
+        "title" => $title,
         "path" => str_replace($baseDir . "/", "", $file)
-    ]
+    ];
 }
 
 usort($posts, function ($a, $b, $c){
-    return strcmp($c["path"], $b["path"], $a["path"])
+    return strcmp($c["path"], $b["path"], $a["path"]);
 });
 ?>
+
+<!DOCTYPE html>
+<html lang = "pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>DavidLog</title>
+</head>
+<body>
+<h1>DavidLog</h1>
+
+<ul>
+<?php
+    foreach($posts as $post)
+?>
+    <li>
+        <a href="post.php?p=<?= urlencode($post["path"]) ?>">
+            <?= htmlspecialchars($post["title"]) ?>
+        </a>
+    </li>
+</ul>
+</body>
+</html>
