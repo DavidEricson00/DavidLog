@@ -38,6 +38,7 @@ $content = implode("\n", $lines);
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./icon.png" type="image/png">
     <title><?= htmlspecialchars($title) ?></title>
 </head>
 <body>

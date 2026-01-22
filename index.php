@@ -33,6 +33,7 @@ usort($posts, function ($a, $b) {
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
     <title>DavidLog</title>
+    <link rel="icon" href="./icon.png" type="image/png">
 </head>
 <body>
     <header>
