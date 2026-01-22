@@ -83,3 +83,27 @@ header {
 .post-item {
   margin: 16px 0;
 }
+
+.site-footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #555;
+}
+
+.social-links a:hover {
+    color: #ff0d0d;
+    text-decoration: underline;
+}

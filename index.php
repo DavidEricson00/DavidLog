@@ -51,5 +51,19 @@ usort($posts, function ($a, $b) {
             </li>
         <?php endforeach; ?>
     </ul>
+
+    <footer class="site-footer">
+        <div class="social-links">
+            <a href="https://github.com/DavidEricson00" target="_blank" rel="noopener">
+                GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/davidericson00/" target="_blank" rel="noopener">
+                LinkedIn
+            </a>
+            <a href="https://davidericson00.itch.io" target="_blank" rel="noopener">
+                Itch.io
+            </a>
+        </div>
+    </footer>
 </body>
 </html>
