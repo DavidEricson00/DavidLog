@@ -37,8 +37,8 @@ $content = implode("\n", $lines);
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="./icon.png" type="image/png">
+    <link rel="stylesheet" href="style.css?v=<?= filemtime(__DIR__ . "/style.css") ?>">
+    <link rel="icon" href="icon.png?v=<?= filemtime(__DIR__ . '/icon.png') ?>" type="image/png">
     <title><?= htmlspecialchars($title) ?></title>
 </head>
 <body>

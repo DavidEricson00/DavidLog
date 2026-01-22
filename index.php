@@ -31,9 +31,9 @@ usort($posts, function ($a, $b) {
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=<?= filemtime(__DIR__ . "/style.css") ?>">
+    <link rel="icon" href="icon.png?v=<?= filemtime(__DIR__ . '/icon.png') ?>" type="image/png">
     <title>DavidLog</title>
-    <link rel="icon" href="./icon.png" type="image/png">
 </head>
 <body>
     <header>
