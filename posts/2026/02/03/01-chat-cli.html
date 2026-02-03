@@ -1,0 +1,90 @@
+Chat em CLI, o que poderia dar de errado?
+
+<p>Bem, após terminar o <a href="https://github.com/DavidEricson00/StickIt-Frontend" target="_blank" rel="noopener noreferrer">StickIt!</a>, eu, como normalmente acontece, decidi partir para outro projeto. Dessa vez eu escolhi uma coisa bem interessante, mas que eu nunca tinha trabalhado antes: <strong>WebSockets</strong>.</p>
+
+<p>Como esse blog não é só baboseira, agora vai um pequeno resumo do que é WebSocket.</p>
+
+<p>Basicamente, <strong>WebSocket é um protocolo de comunicação</strong> que permite um tipo de comunicação chamada <strong>full duplex</strong>.</p>
+
+<p>E o que seria isso, você me pergunta? É simples: ao contrário do HTTP, que segue aquela linha clássica de <em>solicitação e resposta</em> (req e res para os mais íntimos), no WebSocket é possível ter uma <strong>comunicação bidirecional contínua</strong> e de <strong>baixa latência</strong> entre cliente e servidor.</p>
+
+<p>Ou seja: em vez do cliente falar “oi servidor” e o servidor responder “oi cliente” e pronto (fim de papo), no WebSocket os dois ficam com um <strong>canal aberto</strong>, como se fosse uma ligação. Os dois podem mandar mensagens a qualquer momento, sem precisar “pedir permissão” toda vez.</p>
+
+<p>Por causa dessa característica de comunicação bidirecional, WebSockets são comumente usados em jogos, ferramentas de colaboração em tempo real e...</p>
+
+<p><strong>chats</strong>.</p>
+
+<p>Que foi exatamente o que eu escolhi pra desenvolver no meu projeto :D</p>
+
+<p>Então lá fui eu. Escolhi fazer em Python, já que considero uma boa linguagem para esse tipo de estudo inicial, e comecei a desenvolver um projeto bem simples.</p>
+
+<p>Passando bem por cima, o porjeto consiste em: existe um servidor que fica aberto esperando conexões de clientes, e existem clientes que se conectam a esse servidor. O acesso é feito pelo terminal e é isso.</p>
+
+<p>No fluxo que eu tinha desenvolvido no começo, o cliente inseria um username e bingo: ele entrava no “chat” (que ainda não era bem um chat de verdade, porque não tinha comunicação com outros clientes) e podia mandar mensagens pro servidor.</p>
+
+<p>Até aí, beleza.</p>
+
+<p>Aí eu decidi adicionar mais clientes e finalmente fazer o chat em tempo real, com as mensagens indo de um cliente pro outro.</p>
+
+<p>E foi aí que eu percebi que talvez não tenha sido a ideia mais inteligente do mundo fazer um chat no terminal.</p>
+
+<p>“Por quê?”, você me pergunta?</p>
+
+<p>Vou lhe explicar</p>
+
+<p>Imagine que você é o RafaelLegal123 e está conversando com seu amigo LucasFalaMuito.</p>
+
+<p>Num app tipo WhatsApp, você tem duas seções bem separadas: a área do chat (com os balões de mensagem) e a área do input (onde você escreve). Tudo é bem dividido, e você consegue mandar e receber mensagens normalmente \o/</p>
+
+<p>Só que o terminal tem um pequeno probleminha:</p>
+
+<p><strong>ele é singleline :)</strong></p>
+
+<p>Ou seja: a área onde você escreve é a mesma área onde aparecem as mensagens.</p>
+
+<p>Então a interação é basicamente assim:</p>
+
+<pre>
+[LucasFalaMuito]: Vamos sair pra comer
+&gt;
+</pre>
+
+<p>Aí você começa a escrever sua resposta:</p>
+
+<pre>
+[LucasFalaMuito]: Vamos sair pra comer
+&gt; Vamos sim, tô m
+</pre>
+
+<p>Mas como o LucasFalaMuito é impaciente, ele manda outra mensagem enquanto você ainda está escrevendo… e aí vira isso:</p>
+
+<pre>
+[LucasFalaMuito]: Vamos sair pra comer
+&gt; Vamos sim, tô m[LucasFalaMuito]: Responde logooooo
+</pre>
+
+<p>:)</p>
+
+<p>O problema é que o terminal não “segura” sua digitação num canto separado. Ele simplesmente imprime a mensagem nova onde estiver o cursor, e pronto: <strong>mistura tudo</strong>.</p>
+
+<p>Ou seja, eu estava tentando implementar um sistema que naturalmente precisa de duas áreas (chat + input) em um lugar que só tem uma.</p>
+
+<p>A partir daí eu não tinha ideia de como resolver.</p>
+
+<p>Tentei alternativas tipo só carregar mensagens quando você mandasse um input, ou só atualizar a tela em determinados momentos… mas nada era bom. Ou ficava travado, ou ficava feio, ou simplesmente não funcionava direito.</p>
+
+<p>Então eu desisti e abandonei o projeto...</p>
+
+
+
+<p>Mas aí, um dia, quando eu estava quase pegando no sono, me veio uma ideia genial.</p>
+
+<p><strong>E se eu só… usasse dois terminais?</strong></p>
+
+<p>Um terminal só pra ver o chat, e outro terminal só pra digitar.</p>
+
+<p>(Tá, talvez tenha sido uma ideia bem óbvia, mas pra mim foi genial na hora)</p>
+
+<p>Então eu implementei o sistema, e aí consegui salvar o projeto de ser descontinuado e esquecido.</p>
+
+<p>Essa é a magia da programação :D</p>
