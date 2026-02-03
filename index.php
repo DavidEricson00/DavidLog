@@ -38,7 +38,7 @@ usort($posts, function ($a, $b) {
 <body>
     <header>
         <h1 class="site-title">DavidLog</h1>
-        <h3 class="site-subtitle">Bom dia :)</h3>
+        <h3 class="site-subtitle">Boa tarde :)</h3>
     </header>
 
     <ul class="post-list">
