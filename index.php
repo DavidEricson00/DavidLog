@@ -102,16 +102,18 @@ foreach (glob("$baseDir/*/*/*/*.html") as $file) {
     $relativePath = str_replace($baseDir . "/", "", $file);
     $parts = explode("/", $relativePath);
 
-    [$year, $month, $day] = array_slice($parts, 0, 3);
+    if (count($parts) >= 3) {
+        [$year, $month, $day] = array_slice($parts, 0, 3);
+        
+        $lines = file($file, FILE_IGNORE_NEW_LINES);
+        $title = !empty($lines) ? array_shift($lines) : "Sem Título";
 
-    $lines = file($file, FILE_IGNORE_NEW_LINES);
-    $title = array_shift($lines);
-
-    $posts[] = [
-        "title" => $title,
-        "path" => $relativePath,
-        "date" => "$day/$month/$year"
-    ];
+        $posts[] = [
+            "title" => $title,
+            "path" => $relativePath,
+            "date" => "$day/$month/$year"
+        ];
+    }
 }
 
 usort($posts, function ($a, $b) {
@@ -123,41 +125,47 @@ usort($posts, function ($a, $b) {
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css?v=<?= filemtime(__DIR__ . "/style.css") ?>">
     <link rel="icon" href="icon.png?v=<?= filemtime(__DIR__ . '/icon.png') ?>" type="image/png">
     <title>DavidLog</title>
 </head>
 <body>
-    <header class="site-header">
-        <h1 class="site-title">DavidLog</h1>
-        <h3 class="site-subtitle">
-            <?= htmlspecialchars($subtitle) ?>
-        </h3>
-    </header>
+    
+    <div class="container">
+        <header class="site-header">
+            <h1 class="site-title">DavidLog</h1>
+            <div class="separator"></div>
+            <h3 class="site-subtitle">
+                <?= htmlspecialchars($subtitle) ?>
+            </h3>
+        </header>
 
-    <ul class="post-list">
-        <?php foreach ($posts as $post): ?>
-            <li class="post-item">
-                <a class="post-link" href="post.php?p=<?= urlencode($post["path"]) ?>">
-                    <?= htmlspecialchars($post["title"]) ?>
-                </a>
-                <p class="post-date"><?= $post["date"] ?></p>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+        <main>
+            <ul class="post-list">
+                <?php foreach ($posts as $post): ?>
+                    <li class="post-item">
+                        <a class="post-link" href="post.php?p=<?= urlencode($post["path"]) ?>">
+                            <span class="post-title-text"><?= htmlspecialchars($post["title"]) ?></span>
+                            <span class="post-date"><?= $post["date"] ?></span>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </main>
 
-    <footer class="site-footer">
-        <div class="social-links">
-            <a href="https://github.com/DavidEricson00" target="_blank" rel="noopener">
-                GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/davidericson00/" target="_blank" rel="noopener">
-                LinkedIn
-            </a>
-            <a href="https://davidericson00.itch.io" target="_blank" rel="noopener">
-                Itch.io
-            </a>
-        </div>
-    </footer>
+        <footer class="site-footer">
+            <div class="separator small"></div>
+            <nav class="social-links">
+                <a href="https://github.com/DavidEricson00" target="_blank" rel="noopener">GitHub</a>
+                <span class="divider">/</span>
+                <a href="https://www.linkedin.com/in/davidericson00/" target="_blank" rel="noopener">LinkedIn</a>
+                <span class="divider">/</span>
+                <a href="https://davidericson00.itch.io" target="_blank" rel="noopener">Itch.io</a>
+            </nav>
+            <p class="copyright">© <?= date('Y') ?> David Ericson</p>
+        </footer>
+    </div>
+
 </body>
 </html>

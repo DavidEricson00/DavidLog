@@ -37,6 +37,7 @@ $content = implode("\n", $lines);
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css?v=<?= filemtime(__DIR__ . "/style.css") ?>">
     <link rel="icon" href="icon.png?v=<?= filemtime(__DIR__ . '/icon.png') ?>" type="image/png">
     <link rel="canonical"
@@ -44,30 +45,31 @@ $content = implode("\n", $lines);
     <title><?= htmlspecialchars($title) ?></title>
 </head>
 <body>
-    <a class="back-link" href="index.php">← Voltar</a>
 
-    <header>
-        <h1 class="site-title small">DavidLog</h1>
-        <p class="post-date"><?= $postDate ?></p>
-        <h2 class="post-title"><?= htmlspecialchars($title) ?></h2>
-    </header>
+    <div class="container">
+        <a class="back-link" href="index.php">← Voltar</a>
 
-    <article class="post-content">
-        <?= $content ?>
-    </article>
+        <header class="site-header post-header">
+            <h1 class="site-title small">DavidLog</h1>
+            <div class="separator"></div>
+            <p class="post-meta-date"><?= $postDate ?></p>
+            <h2 class="post-title"><?= htmlspecialchars($title) ?></h2>
+        </header>
 
-    <footer class="site-footer">
-        <div class="social-links">
-            <a href="https://github.com/DavidEricson00" target="_blank" rel="noopener">
-                GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/davidericson00/" target="_blank" rel="noopener">
-                LinkedIn
-            </a>
-            <a href="https://davidericson00.itch.io" target="_blank" rel="noopener">
-                Itch.io
-            </a>
-        </div>
-    </footer>
+        <article class="post-content">
+            <?= $content ?>
+        </article>
+
+        <footer class="site-footer">
+            <div class="separator small"></div>
+            <nav class="social-links">
+                <a href="https://github.com/DavidEricson00" target="_blank" rel="noopener">GitHub</a>
+                <span class="divider">/</span>
+                <a href="https://www.linkedin.com/in/davidericson00/" target="_blank" rel="noopener">LinkedIn</a>
+                <span class="divider">/</span>
+                <a href="https://davidericson00.itch.io" target="_blank" rel="noopener">Itch.io</a>
+            </nav>
+        </footer>
+    </div>
 </body>
 </html>

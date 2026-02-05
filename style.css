@@ -5,115 +5,218 @@
   font-style: normal;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: #000;
-  color: #fff;
-  max-width: 900px;
-  margin: 40px auto;
-  line-height: 1.4;
+  background-color: #050505;
+  color: #eeeeee;
+  margin: 0;
+  padding: 0;
   font-family: "PixelOperator", monospace;
+  line-height: 1.6;
+  -webkit-font-smoothing: none;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
   color: #ff0d0d;
   text-decoration: none;
-}
-
-p {
-  font-size: 1.5rem;
+  transition: opacity 0.2s ease;
 }
 
 a:hover {
-  color: #d40f0f;
-  transition: ease-in;
+  opacity: 0.8;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
-header {
+pre, code, kbd, samp {
+  font-family: "PixelOperator", monospace;
+  font-size: 1rem;
+}
+
+pre {
+  background-color: #0a0a0a;
+  border: 1px dashed #333;
+  padding: 15px;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  line-height: 1.4;
+  color: #ccc;
+}
+
+pre strong {
+    color: #fff;
+}
+
+.site-header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 4rem;
+  padding-top: 1rem;
 }
 
 .site-title {
   color: #ff0d0d;
-  font-size: 10rem;
+  font-size: 8rem;
   margin: 0;
-  line-height: 0.9;
+  line-height: 1;
+  letter-spacing: -4px;
 }
 
 .site-title.small {
-  font-size: 6rem;
+  font-size: 4rem;
+  letter-spacing: -2px;
+}
+
+.separator {
+  height: 2px;
+  border-bottom: 2px dashed #333;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.separator.small {
+  margin: 0 auto 1.5rem auto;
+  width: 50%;
+  border-bottom-color: #222;
 }
 
 .site-subtitle {
   font-size: 2rem;
+  font-weight: normal;
+  color: #888;
   margin: 0;
-  display: block;
-}
-
-.site-header {
-  margin-bottom: 4rem;
 }
 
 .post-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  text-align: center;
+  flex: 1;
 }
 
-.post-list li {
-  margin: 12px 0;
+.post-item {
+  margin-bottom: 0.5rem;
 }
 
 .post-link {
-  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 15px 0;
+  border-bottom: 1px dashed #222;
+  color: #ddd;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.post-title {
-  font-size: 4rem;
-  margin: 0;
+.post-link:hover {
+  color: #ff0d0d;
+  border-bottom-color: #ff0d0d;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-decoration: none;
 }
 
-.post-content {
-  margin-top: 20px;
+.post-title-text {
+  font-size: 1.8rem;
+}
+
+.post-date, .post-meta-date {
+  font-size: 1.1rem;
+  color: #555;
+  white-space: nowrap;
+  margin-left: 20px;
+}
+
+.post-link:hover .post-date {
+  color: #ff0d0d;
+  opacity: 0.7;
 }
 
 .back-link {
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
 }
 
-.post-date {
-  display: block;
-  font-size: 1rem;
-  opacity: 0.7;
-  margin-top: 4px;
+.post-header {
+  margin-bottom: 3rem;
 }
 
-.post-item {
-  margin: 16px 0;
+.post-title {
+  font-size: 3rem;
+  margin: 10px 0 0 0;
+  line-height: 1.2;
+}
+
+.post-content {
+  font-size: 1.4rem;
+  line-height: 1.6;
 }
 
 .site-footer {
-    margin-top: 3rem;
-    padding: 1.5rem 0;
-    text-align: center;
-    border-top: 1px solid #eee;
+  margin-top: 5rem;
+  text-align: center;
+  padding-bottom: 2rem;
 }
 
 .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
 }
 
 .social-links a {
-    text-decoration: none;
-    font-weight: 500;
-    color: #555;
+  color: #ff0d0d;
 }
 
 .social-links a:hover {
-    color: #ff0d0d;
-    text-decoration: underline;
+  text-decoration: underline;
+}
+
+.divider {
+  color: #333;
+}
+
+.copyright {
+  margin-top: 2rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+@media (max-width: 600px) {
+  .site-title {
+    font-size: 5rem;
+  }
+  
+  .post-link {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  
+  .post-date {
+    margin-left: 0;
+    font-size: 1rem;
+  }
+  
+  .post-title-text {
+    font-size: 1.5rem;
+  }
+
+  .post-title {
+    font-size: 2.5rem;
+  }
 }
