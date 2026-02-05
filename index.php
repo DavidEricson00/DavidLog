@@ -6,6 +6,98 @@ $baseDir = __DIR__ . "/posts";
 
 $posts = [];
 
+$subtitles = [
+    "Bom dia :)",
+    "Boa tarde :/",
+    "Boa noite :(",
+    "O blog legal",
+    "Jogue rapadura clicker!",
+    "100% profissional",
+    "._.",
+    "DavidBlog",
+    "O melhor da minha rua!",
+    "Coding",
+    "Melhor deixar pra amanhã",
+    "Pensamentos não intrusivos",
+    "Na minha cabeça faz muito sentido",
+    "Tem alguem lendo isso aqui?",
+    "Olá Mundo",
+    "Hello World",
+    "Um texto em uma tela",
+    "Olá internet",
+    "Penso logo escrevo",
+    "Artesanal",
+    "01101111 01101001",
+    "Conteúdo de qualidade",
+    "Duvidoso",
+    "Melhor que nada",
+    ".io",
+    "DavidLog",
+    "DLC em desenvolvimento",
+    "Agora em web",
+    "Maior blog da minha rua",
+    "Ideia 100% orignal",
+    "Free Host",
+    "Acabou as ideias",
+    "Na minha opinião",
+    "Caixa chinesa",
+    "Maior fã de Turing",
+    "Bits and Bytes",
+    'lang="pt-br"',
+    "É tudo uma simulação",
+    "Feito com autocomplete",
+    "O sentido da vida é",
+    "42",
+    "LogDavid",
+    "Melhor que nada",
+    "Demo Day!",
+    "Pitch",
+    "Um monte de 1 e 0",
+    "Ideia nova",
+    "Brasil",
+    "Foi divertido",
+    "Foi bom enquanto durou",
+    ":0",
+    ":D",
+    ":)",
+    ":(",
+    "Nota de repúdio",
+    "Ouça João Gilberto",
+    "O melhor que eu ja vi",
+    "Sem glútem",
+    "Family friendly",
+    "Relatable",
+    "Lorem ipsum dolor sit amet",
+    "Também disponível em Catalão",
+    "Agora eu to sem ideias",
+    "Deploy",
+    "Versão 1.0",
+    "Não fume. É estrume.",
+    "Não recomendado em caso de suspeita de dengue",
+    "Totalmente revisado",
+    "Sem falhas",
+    "Sem vírus",
+    "100% Seguro",
+    "Erro 404, brincadeira :D",
+    "HaHa",
+    "Uma coleção de insetos",
+    "Só funciona se o actions rodar",
+    "Pixel",
+    "Interface",
+    "Volte sempre",
+    "Não volte",
+    "Desculpa aí qualquer coisa",
+    "A ideia era boa, a execução nem tanto",
+    "Tem como piorar?",
+    "Não sei mais o que colocar aqui",
+    "Tudo tende ao caos",
+    "Agente ou a gente?",
+    "Gentileza gera gentileza",
+    "Obrigado!",
+];
+
+$subtitle = $subtitles[array_rand($subtitles)];
+
 foreach (glob("$baseDir/*/*/*/*.html") as $file) {
     $relativePath = str_replace($baseDir . "/", "", $file);
     $parts = explode("/", $relativePath);
@@ -36,9 +128,11 @@ usort($posts, function ($a, $b) {
     <title>DavidLog</title>
 </head>
 <body>
-    <header>
+    <header class="site-header">
         <h1 class="site-title">DavidLog</h1>
-        <h3 class="site-subtitle">Boa tarde :)</h3>
+        <h3 class="site-subtitle">
+            <?= htmlspecialchars($subtitle) ?>
+        </h3>
     </header>
 
     <ul class="post-list">
